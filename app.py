@@ -4,6 +4,7 @@ load_dotenv()
 
 # Webアプリの作成
 import streamlit as st
+import os
 from langchain_openai import ChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
 llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
@@ -29,13 +30,27 @@ if st.button("実行"):
         messages = [
             SystemMessage(content="あなたは医療分野の専門家です。"),
             HumanMessage(content=input_message),
-            ]
-        result = llm(messages)
-        st.write({result})
+        ]
+        try:
+            result = llm(messages)
+            st.write("Result type:", type(result))  # 型を確認
+            if hasattr(result, "content"):
+                st.write(result.content)
+            else:
+                st.write(result)
+        except Exception as e:
+            st.error(f"エラーが発生しました: {e}")
     else:
         messages = [
             SystemMessage(content="あなたは農業分野の専門家です。"),
             HumanMessage(content=input_message),
-            ]
-        result = llm(messages)
-        st.write({result})
+        ]
+        try:
+            result = llm(messages)
+            st.write("Result type:", type(result))  # 型を確認
+            if hasattr(result, "content"):
+                st.write(result.content)
+            else:
+                st.write(result)
+        except Exception as e:
+            st.error(f"エラーが発生しました: {e}")
