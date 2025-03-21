@@ -33,7 +33,6 @@ if st.button("実行"):
         ]
         try:
             result = llm(messages)
-            st.write("Result type:", type(result))  # 型を確認
 
             # AIMessageのインスタンスからcontentを抽出
             if isinstance(result, AIMessage):
@@ -49,7 +48,6 @@ if st.button("実行"):
         ]
         try:
             result = llm(messages)
-            st.write("Result type:", type(result))  # 型を確認
 
             # AIMessageのインスタンスからcontentを抽出
             if isinstance(result, AIMessage):
