@@ -34,10 +34,12 @@ if st.button("実行"):
         try:
             result = llm(messages)
             st.write("Result type:", type(result))  # 型を確認
-            if hasattr(result, "content"):
-                st.write(result.content[0])
+
+            # AIMessageのインスタンスからcontentを抽出
+            if isinstance(result, AIMessage):
+                st.write(result.content)  # AIMessageの内容を表示
             else:
-                st.write(result[0])
+                st.error("結果がAIMessage型ではありません。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
     else:
@@ -48,9 +50,11 @@ if st.button("実行"):
         try:
             result = llm(messages)
             st.write("Result type:", type(result))  # 型を確認
-            if hasattr(result, "content"):
-                st.write(result.content[0])
+
+            # AIMessageのインスタンスからcontentを抽出
+            if isinstance(result, AIMessage):
+                st.write(result.content)  # AIMessageの内容を表示
             else:
-                st.write(result[0])
+                st.error("結果がAIMessage型ではありません。")
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
