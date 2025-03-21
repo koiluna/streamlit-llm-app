@@ -35,9 +35,9 @@ if st.button("実行"):
             result = llm(messages)
             st.write("Result type:", type(result))  # 型を確認
             if hasattr(result, "content"):
-                st.write(result.content)
+                st.write(result.content[0])
             else:
-                st.write(result)
+                st.write(result[0])
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
     else:
@@ -49,8 +49,8 @@ if st.button("実行"):
             result = llm(messages)
             st.write("Result type:", type(result))  # 型を確認
             if hasattr(result, "content"):
-                st.write(result.content)
+                st.write(result.content[0])
             else:
-                st.write(result)
+                st.write(result[0])
         except Exception as e:
             st.error(f"エラーが発生しました: {e}")
